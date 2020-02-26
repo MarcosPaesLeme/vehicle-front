@@ -1,0 +1,31 @@
+.login-page {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  //   align-items: center;
+    text-align: center;
+    min-height: 100vh;
+  }
+  
+  .mtb-4em{
+    margin: 4em 0em;
+  }
+
+  .w-35{
+    width: 35%!important;
+    min-width: unset!important;
+}
+
+.main-fab {
+  position:absolute;
+  z-index:20;
+  font-size:30px;
+  top:100px;
+  left:24px;
+  transform:scale(.88,.88);
+}
+
+.red-snackbar{
+  background-color: rgb(153, 50, 50);
+  color:lightgoldenrodyellow;
+}

@@ -1,0 +1,70 @@
+table {
+  overflow: auto;
+  max-height: 700px;
+  width: 100%;
+  }
+  
+  .mat-form-field {
+    font-size: 14px;
+    width: 100%;
+  }
+  
+  td, th {
+    width: 25%;
+  }
+
+  .mtb-4em{
+    margin: 4em 0em;
+  }
+
+  .example-icon {
+    padding: 0 14px;
+  }
+  
+  .example-spacer {
+    flex: 1 1 auto;
+  }
+
+  .add-fab {
+    position:absolute;
+    z-index:20;
+    font-size:30px;
+    top:100px;
+    left:24px;
+    transform:scale(.88,.88);
+  }
+
+  .search-fab {
+    font-size:30px;
+  }
+
+  .md-tall {
+    height: 6em;
+    min-height: 6em;
+    max-height: 6em;
+  }
+
+  .aling-title {
+    padding-top: 6em;
+    padding-left: 3em;
+  }
+
+  // .example-form {
+  //   min-width: 150px;
+  //   max-width: 500px;
+  //   width: 100%;
+  // }
+  
+  .example-full-width {
+    width: 30%;
+  }
+
+.button-table{
+    width: 2em;
+    height: 3em;
+}
+
+#container{
+  text-align: center;
+  display: inline-flex
+}

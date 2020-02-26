@@ -1,0 +1,72 @@
+<mat-toolbar class="md-tall" color="primary">
+  <mat-toolbar-row>
+    <span> Bem vindo ao sistema {{ userLogged?.email }}</span>
+    <span class="example-spacer"></span>
+    <mat-icon class="example-icon" aria-hidden="false" (click)="logOff()" aria-label="logoff"><mat-icon>exit_to_app</mat-icon></mat-icon>
+  </mat-toolbar-row>
+  <mat-toolbar-row>
+    <span class="aling-title">Lista de veículos</span>
+    <span class="example-spacer"></span>
+    <div class="add-fab">
+      <button mat-flat-button color="accent" (click)="openCreateVehicleModal()">+</button>
+    </div>
+    <div class="search-fab" style="font-size: 30px;" (click)="showInput()" *ngIf="displaySearchInput">
+      <button mat-flat-button color="primary"><mat-icon>search</mat-icon></button>
+    </div>
+
+      <mat-form-field class="search-fab example-full-width" style="margin-top: 9.5em; font-size: 14px;" *ngIf="!displaySearchInput">
+        <!-- <mat-label>Favorite food</mat-label> -->
+        <input matInput (keyup)="applyFilter($event)" placeholder="Marca" >
+      </mat-form-field>
+
+  </mat-toolbar-row>
+</mat-toolbar>
+
+<div class="mat-elevation-z8">
+  <table mat-table [dataSource]="dataSource" matSort class="text-center">
+
+    <!-- Veiculo Column -->
+    <ng-container matColumnDef="Veiculo">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header class="text-center"> Veiculo </th>
+      <td mat-cell *matCellDef="let row"> {{row.vehicle}} </td>
+    </ng-container>
+
+    <!-- Marca Column -->
+    <ng-container matColumnDef="Marca" class="text-center">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header class="text-center"> Marca </th>
+      <td mat-cell *matCellDef="let row"> {{row.brand}} </td>
+    </ng-container>
+
+    <!-- Ano Column -->
+    <ng-container matColumnDef="Ano" >
+      <th mat-header-cell *matHeaderCellDef mat-sort-header class="text-center"> Ano </th>
+      <td mat-cell *matCellDef="let row"> {{row.year}} </td>
+    </ng-container>
+
+    <!-- Status Column -->
+    <ng-container matColumnDef="Status" >
+      <th mat-header-cell *matHeaderCellDef mat-sort-header class="text-center"> Status </th>
+      <td mat-cell *matCellDef="let row"> {{row.active ? 'Ativo' : 'Desativado'}} </td>
+    </ng-container>
+
+    <!-- Ações Column -->
+    <ng-container matColumnDef="Ações" >
+      <th mat-header-cell *matHeaderCellDef mat-sort-header class="text-center"> Ações </th>
+      <td mat-cell *matCellDef="let row" [style.color]="row.acao"> 
+        <div id="container">
+        <button mat-raised-button color="primary" class="mr-2 button-table" (click)='editModal(row)'> <mat-icon>edit</mat-icon>
+        </button>  
+        
+        <button mat-raised-button color="warn" class="button-table" (click)='deleteVehicle(row)'> <mat-icon>restore_from_trash</mat-icon>
+        </button>
+      </div>  
+      </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;">
+    </tr>
+  </table>
+
+  <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
+</div>

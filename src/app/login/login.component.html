@@ -1,0 +1,31 @@
+<div class="login-page">
+  <div class="col-auto">
+      <h1 class="display-4"> Login</h1>
+      <form [formGroup]="form">
+          <div class="mtb-4em">
+              <mat-form-field appearance="outline" class="mr-2">
+                  <mat-label>Email</mat-label>
+                  <input matInput formControlName="email" type="email" placeholder="Digite seu E-mail">
+                  <mat-error *ngIf="showInvalidFeedback('email')">Campo Obrigatório</mat-error>
+              
+              </mat-form-field>
+
+              <mat-form-field appearance="outline">
+                  <mat-label>Senha</mat-label>
+                  <input matInput formControlName="password" [type]="!hide ? 'password' : 'text'"
+                      placeholder="Digite sua senha">
+                  <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
+                      [attr.aria-pressed]="hide">
+                      <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                  </button>
+                  <mat-error *ngIf="showInvalidFeedback('password')">Campo Obrigatório</mat-error>
+              </mat-form-field>
+          </div>
+          <button mat-raised-button color="primary" class="mr-2" (click)="checkLogin()" [disabled]="form.invalid">
+              Entrar </button>
+          <button mat-raised-button color="accent" (click)="register()"> Registrar-se </button>
+
+      </form>
+
+  </div>
+</div>

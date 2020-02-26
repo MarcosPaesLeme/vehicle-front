@@ -1,0 +1,42 @@
+<h2 mat-dialog-title style="text-align: center;">Modal de criação</h2>
+
+<mat-dialog-content align="center" [formGroup]="form" >
+  
+  <div layout="row" layout-align="center center">
+  <mat-form-field class="example-full-width">
+    <mat-label>Veículo</mat-label>
+    <input matInput formControlName="vehicle" type="text" placeholder="Onix">
+    <mat-error *ngIf="showInvalidFeedback('vehicle')">Campo Obrigatório</mat-error>
+  </mat-form-field>
+</div>
+<div layout="row" layout-align="center center">
+  <mat-form-field class="example-full-width">
+    <mat-label>Marca</mat-label>
+    <input matInput formControlName="brand" type="text" placeholder="Ford">
+    <mat-error *ngIf="showInvalidFeedback('brand')">Campo Obrigatório</mat-error>
+
+  </mat-form-field>
+</div>
+<div layout="row" layout-align="center center">
+
+  <mat-form-field class="example-full-width">
+    <mat-label>Ano</mat-label>
+    <input matInput formControlName="year" type="number" min="1900" max="2021" placeholder="2020">
+    <mat-error *ngIf="showInvalidFeedback('year')">Campo Obrigatório</mat-error>
+
+  </mat-form-field>
+</div>
+
+<div layout="row" layout-align="center center">
+
+  <mat-form-field class="example-full-width">
+    <mat-label>Descrição</mat-label>
+    <textarea matInput rows="4" formControlName="description" type="text" placeholder="Ex. It makes me feel..."></textarea>
+  </mat-form-field>
+</div>
+</mat-dialog-content>
+
+<mat-dialog-actions align="center">
+  <button class="mat-raised-button"(click)="close()">Close</button>
+  <button class="mat-raised-button mat-primary"(click)="save()" [disabled]="form.invalid">Save</button>
+</mat-dialog-actions>
